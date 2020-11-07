@@ -1,0 +1,17 @@
+#include <iostream>
+#include<string>
+
+using namespace std;
+
+int main(){
+    int n;
+    cin>>n;
+    string int_str[] = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+    if (n > 9){
+        cout<<"Greater than 9"<<endl;
+    }
+    else{
+        cout<<int_str[n-1]<<endl;
+    }
+    return 0;
+}
