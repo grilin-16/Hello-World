@@ -1,0 +1,72 @@
+#include<iostream.h>
+#include<conio.h>
+#include<stdio.h>
+#include<string.h>
+
+class clothing{
+	char code[50],material[50],type[50];
+	float price;
+	void calc_price(){
+		if(strcmpi(material,"cotton")==0)
+		   {if(strcmpi(type,"trouser")==0)
+		     price=1500;
+		else if(strcmpi(type,"shirt")==0)
+		      price=1200;
+		      }
+		else {
+			if(strcmpi(type,"trouser")==0)
+			  price=0.25*1500;
+			else if(strcmpi(material,"cotton")==0)
+			  price=0.25*1200;
+			}
+		cout<<price;
+		}
+	public:
+		clothing(){
+			strcpy(code,"Not assigned");
+			strcpy(type,"Not assigned");
+			strcpy(material,"Not assigned");
+			price=0;
+			}
+		void enter(){
+			cout<<"\nEnter the code : ";
+			gets(code);
+			cout<<"\nEnter type : ";
+			gets(type);
+			cout<<"\nEnter the material : ";
+			calc_price();
+		}
+		clothing(char x[],char y[],float p,char z[]="COTTON")
+			 strcpy(code,x);
+			 strcpy(material,z);
+			 strcpy(type,y);
+			 price=p;
+			 }
+		clothing(clothing &c1){
+			strcpy(code,c1.code);
+			strcpy(type,c1.type);
+			strcpy(material,c1.material);
+			price=c1.price;
+			}
+		void display(){
+			cout<<"\nThe material is "<<material;
+			cout<<"\nCode is "<<code;
+			cout<<"\nType is "<<type;
+			cout<<"\nPrice is "<<price;
+			}
+		};
+	void main(){
+		clrscr();
+		clothing c1;
+		cout<<"\nDefault constructor "<<endl;
+		c1.display;
+		c1.enter();
+
+		clothing c2("MAT01","MENSWEAR",1000);
+		cout<<"\nParameterised constructor "<<endl;
+		c2.display();
+
+		clothing c3(c1);
+		cout<<"\nCopy constructor "<<endl;
+		c3.display();
+	getch();}
