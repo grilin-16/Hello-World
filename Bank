@@ -1,0 +1,111 @@
+#include<iostream.h>
+#include<conio.h>
+#include<stdio.h>
+int n,i;
+class BANK{
+	long int acno;
+	char name[50];
+	char type;
+	float bal;
+	float fd;
+ public:void enter_data(){
+
+			cout<<"\nEnter your account number : ";
+			cin>>acno;
+			cout<<"\nEnter your name : ";
+			gets(name);
+			cout<<"\nEnter your balance amount : ";
+			cin>>bal;
+			cout<<"\nEnter your account type : ";
+			cin>>type;
+
+			if(type=='s'||type=='S')
+				{cout<<"\nEnter the no. of fds : ";
+				 cin>>fd;}
+
+			else
+				fd=0;
+			cout<<"___________________________________";
+			}
+
+	void deposit(float amt){
+		bal+=amt;
+		cout<<"\nNew balance : "<<bal;
+		}
+
+	void withdraw(float amt){
+		if((bal-amt)<500)
+			cout<<"\nSorry. You can't withdraw. " ;
+		else
+		       bal=bal-amt;
+			cout<<"\nNew balance : "<<bal;
+
+			}
+
+	void display_detail(){
+
+		      cout<<"\n"<<acno<<"\t\t"<<name<<"\t\t"<<type<<"\t\t"<<bal<<"\t\t"<<fd;
+
+			}
+
+	int  get_acno(){
+		return acno;
+		}
+
+	};
+	BANK b[100];
+
+ void main(){
+	int ch,flag=0;
+	float amt;
+	char ans;
+	clrscr();
+	cout<<"\nEnter no. of customers : ";
+	cin>>n;
+	for(i=0;i<n;i++){
+	    b[i].enter_data();
+	    }
+	cout<<"___________________________________";
+	long int acno;
+       do{	cout<<"\nEnter your account no. : ";
+	cin>>acno;
+	for(i=0;i<n;i++){
+	if(acno==b[i].get_acno()){
+		flag=1;
+
+	   cout<<"\n\t\t MENU ";
+	   cout<<"\n 1. Deposit ";
+	   cout<<"\n 2. Withdraw ";
+	   cout<<"\n Enter choice ";
+	   cin>>ch;
+
+			   if(ch==1){
+			      cout<<"\n Enter amount to be deposited : ";
+			      cin>>amt;
+			      b[i].deposit(amt);
+				   }
+
+			   else if(ch==2){
+			      cout<<"\nEnter amount to withdraw: ";
+			      cin>>amt;
+			      b[i].withdraw(amt);
+				    }
+
+			    else
+				cout<<"\nWrong choice ";
+
+
+			    }
+		  }
+	   if(flag==0)
+		cout<<"\nNo matching account found ";
+
+		cout<<"\nDo you wish to continue (Y/N) : ";
+		cin>>ans;
+		}while(ans=='Y'||ans=='y');
+		cout<<"\nAccount no.: "<<"\tName: "<<"\tType of account: "<<"\tBalance: "<<"\tNo. of fd's: ";
+		for(i=0;i<n;i++){
+			b[i].display_detail();}
+
+
+ getch();}
