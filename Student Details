@@ -1,0 +1,114 @@
+#include<iostream.h>
+#include<conio.h>
+#include<stdio.h>
+
+struct student{
+intrno;
+char name[20];
+float marks[5];
+float tmark;
+char gr;
+float perc;    
+}s[100];	
+
+int i,j,n;
+
+void enterdetails(student a[]){
+for(i=0;i<n;i++){ 
+  cout<<"\nName:";
+  gets(a[i].name);
+  cout<<"Rollno:";
+  gets(a[i].rno);}
+  cout<<"Marks of 5 subjects";
+  for(i=0;i<n;i++){ 
+    a[i].tmark=0;
+ 	  for(j=0;j<5;j++)
+    	  a[i].tmark=a[i].tmark+a[i].marks[j]; 
+        }
+  for(i=0;i<n;i++)
+  			 a[i].perc=a[i].tmark/5;
+
+  for(i=0;i<n;i++){  
+    if(a[i].perc>=90)
+  		  a[i].gr='A';
+  	else if(a[i].perc<90&&a[i].perc>=80)
+        a[i].gr='B';
+ 		else if(a[i].perc<80&&a[i].perc>=60)
+  		  a[i].gr='C';
+   	else if(a[i].perc<60&&a[i].perc>=40)
+   		 a[i].gr='D';
+   	else if(a[i].perc<40)
+   		 a[i].gr='F';                        
+            }             
+       }
+
+void dist(student a[])
+{ int m=0;
+  cout<<"\nNAME \tROLLNO \tTOTAL MARK \tGRADE \tPERCENTAGE"<<endl;
+  	cout<<"-------------------------------------------------"<<endl;
+  for(i=0;i<n;i++)
+  	 if(a[i].perc>=80)
+   			{ m++;
+   	  cout<<a[i].name<<"\t"<<a[i].rno<<"\t"<<a[i].tmark<<"\t\t"<<a[i].gr<<"\t"<<a[i].perc<<endl; }
+  cout<<"\n\nTotal number of distinctions="<<m;   }
+
+void fail(student a[])
+{ int m=0;
+  		for(i=0;i<n;i++)
+   if(a[i].perc<40)
+ 			   m++;
+ 	 cout<<"\nTotal number of failures="<<m;   }
+
+void printdetails(student a[])
+{ cout<<"\nNAME \tROLLNO \tTOTAL MARKS \tGRADE \tPERCENTAGE"<<endl;
+ 		 cout<<"---------------------------------------------------"<<endl;
+  			for(i=0;i<n;i++)
+ 	        cout<<a[i].name<<"\t"<<a[i].rno<<"\t"<<a[i].tmark<<"\t\t"<<a[i].gr<<"\t"<<a[i].perc<<endl;
+}
+
+void top(student a[])
+{ student top;
+  top.perc=0;
+ 	 for(i=0;i<n;i++)
+   if(a[i].perc>top.perc)
+     top=a[i];
+
+  cout<<"\n\tTOP SCORER";
+  cout<<"\nName:"<<top.name;
+  cout<<"\nRollno:"<<top.rno;
+  cout<<"\nTotal marks:"<<top.tmark;
+  cout<<"\nGrade:"<<top.gr;
+  cout<<"\nPercentage:"<<top.perc;    }
+
+void main()
+{ clrscr();
+  char ans,an;
+  student st[100];
+  clrscr();
+  cout<<"\nEnter number of students:";
+  cin>>n;
+   enterdetails(st);
+  do{
+  clrscr();
+  cout<<"\n\tTHE MENU";
+  cout<<"\nA.Distinctions";
+  cout<<"\nB.Top scorer";
+  cout<<"\nC.Details";
+cout<<"\nD.Fĺails";
+  cout<<"\nEnter your choice(A/B/C/D):";
+  cin>>ans;
+  cout<<"\n-------------------------------------------------";
+   switch(ans)
+    { case 'A':
+      case 'a':dist(st);break;
+      case 'B':
+      case 'b':top(st);break;
+      case 'C':
+      case 'c':printdetails(st);break;
+      case 'D':
+      case 'd':fail(st);break;
+      default:cout<<"\nWrong choice";  }
+  cout<<"\n-------------------------------------------------";
+  cout<<"\nDo youwish to continue(Y/N):";
+  cin>>an;}while(an=='Y'||an=='y');
+getch ();}
