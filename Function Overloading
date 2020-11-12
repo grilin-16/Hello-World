@@ -1,0 +1,66 @@
+#include<iostream.h>
+#include<conio.h>
+
+int x,y,z;
+float j;
+
+class ABC
+{  public: void area(int a)
+	   { cout<<"Area of square:"<<a*a;  }
+
+	   void area(int a,int b)
+	   { cout<<"Area of rectangle:"<<a*b; }
+
+	   void area(int a,int b,int h)
+	   { cout<<"Area of trapezium:"<<((a+b)/2)*h; }
+
+	   void area(float a)
+	   { cout<<"Area of circle:"<<3.14*a*a; }       };
+
+   void main()
+   { clrscr();
+     char ans,an;
+     ABC A;
+     do{
+	 clrscr();
+	 cout<<"\nTHE MENU";
+	 cout<<"\nA.Area of square";
+	 cout<<"\nB.Area of rectangle";
+	 cout<<"\nC.Area of trapezium";
+	 cout<<"\nD.Area of circle";
+	 cout<<"\nEnter your choice(A/B/C/D):";
+	 cin>>ans;
+
+	 switch(ans)
+	 { case 'A':
+	   case 'a':cout<<"\nEnter side of square:";
+		    cin>>x;
+		    A.area(x);
+		    break;
+	   case 'B':
+	   case 'b':cout<<"\nEnter length:";
+		    cin>>x;
+		    cout<<"Enter breadth:";
+		    cin>>y;
+		    A.area(x,y);
+		    break;
+	   case 'C':
+	   case 'c':cout<<"\nEnter length:";
+		    cin>>x;
+		    cout<<"Enter breadth:";
+		    cin>>y;
+		    cout<<"Enter height:";
+		    cin>>z;
+		    A.area(x,y,z);
+		    break;
+	   case 'D':
+	   case 'd':cout<<"\nEnter radius:";
+		    cin>>j;
+		    A.area(j);
+		    break;
+	   default:cout<<"\nWrong choice"; }
+
+	   cout<<"\n\nDo you wish to continue(Y/N):";
+	   cin>>an;}while(an=='y'||an=='Y');
+
+	   getch();}
