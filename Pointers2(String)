@@ -1,0 +1,78 @@
+#include<iostream.h>
+#include<conio.h>
+#include<string.h>
+#include<stdio.h>
+int flag=0,count=0;
+char *search(char a,char *p){
+	for(;p!='\0';p++)
+		if(a==*p)
+			break;
+			return p;
+
+		}
+void match(char a,char *p){
+	for(;p!='\0';p++)
+		if(*p==a){
+		   *p='-';
+		   flag=1;
+		   }
+		}
+void frequency(char a,char*p){
+	for(;*p!='\0';p++)
+		if(a==*p)
+		count++;
+		}
+
+void main(){
+	clrscr();
+	char x,s[30],ans,*l,*m;
+	int ch;
+	do{
+	clrscr();
+	cout<<"\n    MENU";
+	cout<<"\n 1. To search an element and display the rest of the string. ";
+	cout<<"\n 2. To replace the searching character by hyphon. ";
+	cout<<"\n 3. To find the frequency of the entered character. ";
+	cout<<"\n\n Enter your choice : ";
+	cin>>ch;
+
+	if(ch==1){
+		cout<<"\n Enter the string : ";
+		gets(s);
+		cout<<"\n Enter the character : ";
+		cin>>x;
+		cout<<endl;
+		m=s;
+		l=search(x,m);
+		cout<<"\n\n"<<l;
+		}
+	else if(ch==2){
+		cout<<"\n Enter the string : ";
+		gets(s);
+		cout<<"\n Enter the searching element : ";
+		cin>>x;
+		m=s;
+		match(x,m);
+		if(flag==0)
+		      cout<<"\n Element not found ";
+		else
+		      cout<<"\n\n"<<s;
+		}
+	else if(ch==3){
+		cout<<"\n Enter the string : ";
+		gets(s);
+		cout<<"\n Enter the searching element : " ;
+		cin>>x;
+		m=s;
+		frequency(x,m);
+		cout<<"\n Frequency = "<<count;
+		}
+	else
+		cout<<"\n Wrong choice ";
+		cout<<"\n Do you wish to continue (Y/N) : ";
+		cin>>ans;
+		}while(ans=='Y'||ans=='y');
+
+
+getch();
+}
