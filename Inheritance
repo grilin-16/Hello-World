@@ -1,0 +1,97 @@
+#include<iostream.h>
+#include<conio.h>
+#include<stdio.h>
+
+class Person{
+	char name[20];
+	int age;
+	public:void read_person(){
+		cout<<"\n Enter your name : ";
+		gets(name);
+		cout<<"\n Enter your age : ";
+		cin>>age;
+		}
+	       void display_person(){
+		cout<<"\n Name : "<<name;
+		cout<<"\n Age : "<<age;
+		}
+	   };
+class student:public Person{
+	int rno;
+	float avgmark;
+	public:void read_student(){
+		cout<<"\n Enter your roll number : ";
+		cin>>rno;
+		cout<<"\n Enter your average mark : ";
+		cin>>avgmark;
+		}
+	protected:void disprollno(){
+		   cout<<"\n Your roll number is "<<rno;
+		   }
+	public:float get_average(){
+		return avgmark;
+		}
+	     };
+class Graduate_student:public student{
+	char subject[25];
+	char employed;
+	public:void readit(){
+		cout<<"\n Enter your subject : ";
+		gets(subject);
+		cout<<"\n Are you employed (Y/N) : ";
+		cin>>employed;
+		}
+	       void display_subject(){
+		disprollno();
+		cout<<"\n Your subject is "<<subject;
+		}
+	       char working_status(){
+		return employed;
+		}
+	};
+Graduate_student g;
+
+void main(){
+	clrscr();
+	int i,n;
+	float count1=0,count3=0,count4=0;
+	float perc1=0,perc2=0;
+	Graduate_student g1[100];
+	cout<<"\n Enter number of students : ";
+	cin>>n;
+
+	for(i=0;i<n;i++){
+		g1[i].read_person();
+		g1[i].read_student();
+		g1[i].readit();
+		}clrscr();
+	for(i=0;i<n;i++){
+		if(g1[i].working_status()=='Y'||g1[i].working_status()=='y')
+			count1++;
+
+		if(g1[i].get_average()>=35&&g1[i].working_status()!='y'&&g1[i].working_status()!='Y')
+			count3++;
+
+		if(g1[i].get_average()>=75)
+			count4++;
+			    }
+
+		perc1=(count3/n)*100;
+		perc2=(count4/n)*100;
+           	               g=g1[0];
+		for(i=1;i<n;i++){
+			if(g.get_average()<=g1[i].get_average())
+				g=g1[i];
+			}
+  cout<<"\n  REPORT ";
+	cout<<"\n Year - 2018 ";
+	cout<<"\n Number of working students : "<<count1;
+	cout<<"\n Number of non working graduates : "<<count3;
+	cout<<"\n\n Top Scorer ";
+	g.display_person();
+	g.display_subject();
+	cout<<"\n\n Percentage of non working graduates is "<<perc1<<"%";
+	cout<<"\n Percentage of first divisioners is"<<perc2<<"%";
+
+getch();
+}
