@@ -1,0 +1,68 @@
+#include<iostream.h>
+#include<conio.h>
+
+void swap1(int a,int b){
+	int temp;
+	temp=a;
+	a=b;
+	b=temp;
+	}
+void swap2(int &a,int &b){
+	int temp;
+	temp=a;
+	a=b;
+	b=temp;
+	}
+void swap3(int *a,int *b){
+	int *temp;
+	*temp=*a;
+	*a=*b;
+	*b=*temp;
+	}
+void main(){
+	int a,b,ch;
+	char ans;
+	int *x,*y;
+	do{clrscr();
+	cout<<"\n Enter two numbers ";
+	cin>>a>>b;
+	cout<<"\n MENU ";
+	cout<<"\n 1. Call by value. ";
+	cout<<"\n 2. Call by reference. ";
+	cout<<"\n 3. Call by pointer. ";
+	cout<<"\n\n Enter your choice : ";
+	cin>>ch;
+
+	if(ch==1){
+		cout<<"\n Before swapping ";
+		cout<<a<<" , "<<b;
+		swap1(a,b);
+		cout<<"\n After swapping ";
+		cout<<a<<" , "<<b;
+		}
+	else if(ch==2){
+		cout<<"\n Before swapping ";
+		cout<<a<<" , "<<b;
+		swap2(a,b);
+		cout<<"\nAfter swapping ";
+		cout<<a<<" , "<<b;
+		}
+	else if(ch==3){
+		cout<<"\n Before swapping ";
+		cout<<a<<" , "<<b;
+		x=&a;
+		y=&b;
+		swap3(x,y);
+		cout<<"\n After swapping ";
+		cout<<*x<<" , "<<*y;
+		}
+	else
+		cout<<"\n Wrong choice ";
+
+		cout<<"\n Do you wish to continue (Y/N) : ";
+		cin>>ans;
+		}while(ans=='Y'||ans=='y');
+
+	getch();
+	}
+
