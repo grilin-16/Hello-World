@@ -1,0 +1,36 @@
+ int binarysearch(int arr[],int s,int se)
+ {   int f=0,lb,ub,mid;
+     lb=0;
+     ub=s-1;
+     while(lb<=ub)
+     {   mid=(lb+ub)/2;
+	 if(arr[mid]==se)
+	 { f=1;
+	   break; }
+	 else if(arr[mid]>se)
+	 ub=mid-1;
+	 else if(arr[mid]<se)
+	 lb=mid+1;    }
+     if(f==1)
+     return 1;
+     else
+     return 0;	       }
+
+void main(){
+ clrscr();
+ int a[100],i,si,se1;
+ cout<<"\nEnter your limit:";
+	   cin>>si;
+	   cout<<"\nEnter your array elements\n";
+	   for(i=0;i<si;i++)
+	   { cout<<"Element "<<i+1<<"=";
+	     cin>>a[i]; }
+	   cout<<"\nEnter your searching element:";
+	   cin>>se1;
+	   res=binarysearch(a,si,se1);
+	   if(res==1)
+	   cout<<"\n\nElement found";
+	   else
+	   cout<<"\n\nElement not found";
+	   cout<<"\nThank you";
+     getch();}
