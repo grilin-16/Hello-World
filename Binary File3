@@ -1,0 +1,147 @@
+#include<fstream.h>
+#include<conio.h>
+#include<stdio.h>	
+#include<string.h>
+
+class flightdata
+{ int fno;
+  char fname[20];
+  char status;
+  char bpoint[20];
+  char dest[20];
+
+  public:void in()
+	 { cout<<"\nEnter flight number:";
+	   cin>>fno;
+	   cout<<"Enter flight name:";
+	   gets(fname);
+	   cout<<"Enter status:";
+	   cin>>status;
+	   cout<<"Enter boarding point:";
+	   gets(bpoint);
+	   cout<<"Enter destination:";
+	   gets(dest);                  }
+
+	 void out()
+	 { cout<<fno<<"\t"<<fname<<"\t"<<status<<"\t"<<bpoint<<"\t\t"<<dest; }
+
+	 char retstatus()
+	 { return status; }
+
+	 char * retbpoint()
+	 { return bpoint; }    };
+
+  void getdata()
+  {  fstream f1("Flight.dat",ios::out|ios::binary);
+     flightdata f;
+     char ch;
+
+     do
+     {  f.in();
+	f1.write((char *)&f,sizeof(f));
+	cout<<"\nDo you wish to add more(Y/N):";
+	cin>>ch;  }while(ch=='y'||ch=='Y');
+
+     f1.close();	        }
+
+ void transfer()
+ { fstream f1("Flight.dat",ios::in|ios::binary);
+   fstream f2("Inactive.dat",ios::out|ios::binary);
+   flightdata e1;
+
+   while(f1.read((char *)&e1,sizeof(e1)))
+   { if(e1.retstatus()=='I'||e1.retstatus()=='i')
+     { f2.write((char *)&e1,sizeof(e1)); }     }
+  f1.close();  f2.close();
+
+  ifstream f3("Inactive.dat",ios::binary);
+  cout<<"\nNUMBER\tNAME\tSTATUS\tBOARDING\tDESTINATION\n";
+  while(f3.read((char *)&e1,sizeof(e1)))
+  { e1.out();  cout<<"\n";        }
+  f3.close();                                  }
+
+  void count()
+  { fstream f1("Flight.dat",ios::in|ios::binary);
+    flightdata f;
+    int count=0;
+
+    cout<<"\nNUMBER\tNAME\tSTATUS\tBOARDING\tDESTINATION\n";
+while(f1.read((char *)&f,sizeof(f)))
+    { if(f.retstatus()=='A'||f.retstatus()=='a')
+      { f.out();
+	cout<<"\n";
+	count++;             }            }
+
+    cout<<"\n\nNumber of active flights:"<<count;
+     f1.close();                                 }
+
+ void del()
+ { fstream f1("Flight.dat",ios::in|ios::binary);
+   fstream f2("temp.dat",ios::out|ios::binary);
+   flightdata f;
+   char temp[20];
+   int flag=0;
+
+   cout<<"\nEnter boarding point:";
+   gets(temp);
+
+   while(f1.read((char *)&f,sizeof(f)))
+   { if(strcmpi(temp,f.retbpoint())!=0)
+     f2.write((char *)&f,sizeof(f));
+     else
+     flag=1;        }
+   f1.close();
+   f2.close();
+
+   if(flag==1)
+   cout<<"\nFlight deleted...";
+   else
+   cout<<"\nNo flight found";
+
+   remove("Flight.dat");
+   rename("temp.dat","Flight.dat");           }
+
+ void disp()
+ { fstream f1("Flight.dat",ios::in|ios::binary);
+   flightdata f;
+
+   cout<<"\nNUMBER\tNAME\tSTATUS\tBOARDING\tDESTINATION\n";
+   while(f1.read((char *)&f,sizeof(f)))
+   {  f.out(); cout<<"\n";  }
+   f1.close();                                 }
+
+ void main()
+ {  clrscr();
+    fstream f1("Flight.dat",ios::in|ios::binary);
+    flightdata f;
+    char ch,ans;
+    getdata();
+    do
+    { clrscr();
+      cout<<"\n\t THE MENU";
+      cout<<"\nA.Transfer inactive flights";
+      cout<<"\nB.Count number of active flights";
+      cout<<"\nC.Delete flight";
+      cout<<"\nD.Display contents";
+      cout<<"\nEnter your choice(A/B/C/D):";
+      cin>>ch;
+
+      cout<<"_______________________________________\n";
+      switch(ch)
+      { case 'A':
+	case 'a':transfer();
+		 break;
+	case 'B':
+	case 'b':count();
+		 break;
+	case 'C':
+	case 'c':del();
+		 break;
+	case 'D':
+	case 'd':disp();
+		 break;
+	default:cout<<"\nWrong choice";   }
+      cout<<"\n______________________________________";
+      cout<<"\nDo you wish to continue(Y/N):";
+      cin>>ans; }while(ans=='Y'||ans=='y');
+      getch(); }
