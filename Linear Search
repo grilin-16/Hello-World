@@ -1,0 +1,25 @@
+ void linearsearch(int arr[],int s)
+ {  int se1,flag,i,pos;
+	  cout<<"Enter searching element:";
+	  cin>>se1;
+	   for(i=0;i<s;i++)
+	   {   if(arr[i]==se1)
+	       {flag=1;
+	       pos=++i;
+	       break;}     }
+	  if(flag==1)
+	  cout<<"\nElement foumd in position "<<pos;
+	  else
+	  cout<<"\nElement not found";      
+
+void main(){
+ clrscr();
+ int a[100],i,si;
+ cout<<"\nEnter your limit:";
+	   cin>>si;
+	   cout<<"\nEnter your array elements\n";
+	   for(i=0;i<si;i++)
+	   { cout<<"Element "<<i+1<<"=";
+	     cin>>a[i]; }
+	   linearsearch(a,si);
+getch();}
