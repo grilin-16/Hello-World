@@ -1,0 +1,144 @@
+#include<fstream.h>
+#include<conio.h>
+#include<stdio.h>
+#include<string.h>
+
+int n=0;
+
+class emp
+{ char name[30];
+  int empid;
+  float sal;
+  char design[20];
+
+    public: void enter()
+	    { cout<<"\nEnter employee id:";
+	      cin>>empid;
+	      cout<<"Enter name:";
+	      gets(name);
+	      cout<<"Enter salary:";
+	      cin>>sal;
+	      cout<<"Enter designation:";
+	      gets(design);
+	      n++;               }
+
+	    void disp()
+	    { cout<<empid<<"\t"<<name<<"\t"<<sal<<"\t"<<design; }
+
+	    float retsal()
+	    { return sal; }
+
+	    void updatesal()
+	    { sal=sal+5000;   }
+
+	    int retempid()
+	    { return empid;   }
+
+	    void updatedesig(char arr[20])
+	    { strcpy(design,arr);   }          };
+
+   void read()
+   { fstream f1("Myfile.dat",ios::out|ios::binary);
+     emp e1;
+     char ans;
+     do{  e1.enter();
+	  f1.write((char *)&e1,sizeof(e1));
+	  cout<<"\nDo you want to add more records(Y/N):";
+	  cin>>ans;  }while(ans=='Y'||ans=='y');
+     f1.close();           }
+
+   void search()
+   { emp e1;
+     fstream f1("Myfile.dat",ios::in|ios::binary);
+      cout<<"\nEID \tNAME \tSALARY \tDESIGNATION\n";
+      while(f1.read((char *)&e1,sizeof(e1)))
+      {    if(e1.retsal()>15000)
+	{ e1.disp(); cout<<"\n"; }            }
+     f1.close();                         }
+
+   void disprec()
+   { ifstream f1("Myfile.dat",ios::in|ios::binary);
+     emp e1;
+       cout<<"\nEID \tNAME \tSALARY \tDESIGNATION\n";
+       while(f1.read((char *)&e1,sizeof(e1)))
+       {	 e1.disp(); cout<<"\n";             }
+     f1.close();                         }
+
+   void modsal()
+   { fstream f1("Myfile.dat",ios::in|ios::out|ios::binary);
+     emp e1;
+     int m,j=0,pos=0,f=0;
+     cout<<"\nEnter the record number:";
+     cin>>m;
+     while(f1.read((char *)&e1,sizeof(e1)))
+     {   j++;
+	 if(j==m)
+	 {  f=1;
+	    e1.updatesal();
+	    pos=f1.tellg();
+	    f1.seekg(pos-sizeof(e1),ios::beg);
+	    f1.write((char *)&e1,sizeof(e1));
+	    cout<<"\nRecord modified";
+	    break;                   }     }
+     f1.close();
+     if(f==0)
+     cout<<"\nRecord not found";   		 }
+
+     void moddesig()
+     {  fstream f1("Myfile.dat",ios::in|ios::out|ios::binary);
+	emp e1;
+	char temp[20];
+	int flag=0,tempid,pos=0;
+
+	cout<<"\nEnter employee id:";
+	cin>>tempid;
+	cout<<"\nEnter new designation:";
+	gets(temp);
+     if(!f1)
+    cout<<"\nFile not found";
+              while(f1.read((char *)&e1,sizeof(e1)))
+	{  if(tempid==e1.retempid())
+	    { e1.updatedesig(temp);
+	      flag=1;
+	      break; }   }
+	pos=f1.tellg();
+	f1.seekp(pos-sizeof(e1),ios::beg);
+	f1.write((char *)&e1,sizeof(e1));
+	f1.close();
+	e1.disp();
+	if(flag==0)
+	cout<<"\nRecord not found";      }
+
+    void main()
+    { char ans,ch;
+      clrscr();
+      read();
+      do{
+      clrscr(); 
+      cout<<"\n\tTHE MENU";
+      cout<<"\nA.Search employees who earn more than 15000";
+      cout<<"\nB.Modify salary of record by 5000";
+      cout<<"\nC.Display the contents of the file";
+      cout<<"\nD.Search employee id and modify designation";
+      cout<<"\nEnter your choice(A/B/C/D):";
+      cin>>ans;
+      cout<<"_________________________________________________\n";
+      switch(ans)
+      { case 'A':
+	case 'a':search();
+		 break;
+	case 'B':
+	case 'b':modsal();
+		 break;
+	case 'C':
+	case 'c':disprec();
+		 break;
+	case 'D':
+	case 'd':moddesig();
+		 break;
+	default:cout<<"\nWrong choice";    }
+
+      cout<<"\n_________________________________________________";
+      cout<<"\nDo you wish to continue(Y/N):";
+      cin>>ch;}while(ch=='Y'||ch=='y');
+      getch();  }
