@@ -1,0 +1,24 @@
+ void exchange(int arr[],int s)
+ {   int i,flag;
+       cout<<"\nThe old array:";
+       for(i=0;i<s;i++)
+       cout<<arr[i]<<" ";
+       for(i=0;i<s-1;i=i+2)
+       {    flag=arr[i];
+	    arr[i]=arr[i+1];
+	    arr[i+1]=flag;   }
+       cout<<"\nThe new array:";
+       for(i=0;i<s;i++)
+       cout<<arr[i]<<" ";     }
+ void main(){
+ clrscr();
+ int a[100],i,si;
+ cout<<"\nEnter your limit:";
+	   cin>>si;
+	   cout<<"\nEnter your array elements\n";
+	   for(i=0;i<si;i++)
+	   { cout<<"Element "<<i+1<<"=";
+	     cin>>a[i]; }
+	   exchange(a,si);
+	   cout<<"\nThank you";
+ getch();}
