@@ -1,0 +1,107 @@
+#include<fstream.h>
+#include<conio.h>
+#include<stdio.h>
+#include<string.h>
+
+ class doctor
+ { char name[20];
+   char dept[20];
+   float sal;
+
+   public: void in()
+	   { cout<<"\nEnter name:";
+	     gets(name);
+	     cout<<"Department:";
+	     gets(dept);
+	     cout<<"Salary:";
+	     cin>>sal;              }
+
+	   void out()
+	   { cout<<"\n\nName:"<<name;
+	     cout<<"\nDepartment:"<<dept;
+	     cout<<"\nSalary:"<<sal;     }
+
+	   char *retname()
+	   { return name; }  };
+
+ void records()
+ { ofstream f1("PGM12.dat",ios::binary);
+   doctor d1;
+   char ans;
+   cout<<"\nEnter records\n";
+   do{
+     d1.in();
+     f1.write((char *)&d1,sizeof(d1));
+     cout<<"\nDo you want to add more records(Y/N):";
+     cin>>ans;  }while(ans=='Y'||ans=='y');
+   f1.close();           }
+
+ void append()
+ { fstream f1("PGM12.dat",ios::binary|ios::in|ios::out|ios::app);
+   doctor d1;
+   int i,n;
+   char ans;
+   cout<<"\nEnter number of records to be added:";
+   cin>>n;
+    for(i=0;i<n;i++)
+    { d1.in();
+      f1.write((char *)&d1,sizeof(d1));  }
+    f1.close();            }
+
+ void search()
+ { char name[20];
+   int flag=0;
+   cout<<"\nEnter name of doctor:";
+   gets(name);
+   ifstream f1("PGM12.dat",ios::binary);
+   doctor d1;
+   if(!f1)
+   cout<<"\nFile not found";
+   while(f1.read((char *)&d1,sizeof(d1)))
+   {  if(strcmpi(name,d1.retname())==0)
+      { d1.out();  flag=1; break; }               }
+   f1.close();
+   if(flag==0)
+   cout<<"\nRecord not found";      }
+
+ void disp()
+ { ifstream f1("PGM12.dat",ios::binary);
+   doctor d1;
+   if(!f1)
+   cout<<"\nFile not found";
+   while(f1.read((char *)&d1,sizeof(d1)))
+   {  d1.out();  }
+   f1.close();               }
+
+ void main()
+ { clrscr();
+   char ans,ch;
+   records();
+
+   do{
+   clrscr();
+   cout<<"\n\tTHE MENU";
+   cout<<"\nA.Append documents";
+   cout<<"\nB.Search name";
+   cout<<"\nC.Display records";
+   cout<<"\nEnter your choice(A/B/C):";
+   cin>>ans;
+   cout<<"________________________________________";
+
+    switch(ans)
+    { case 'A':
+      case 'a':append();
+	       break;
+      case 'B':
+      case 'b':search();
+	       break;
+      case 'C':
+      case 'c':disp();
+	       break;
+      default:cout<<"\nWrong choice";   }
+
+   cout<<"\n__________________________________";
+   cout<<"\n\nDo you wish to continue(Y/N):";
+   cin>>ch;}while(ch=='Y'||ch=='y');
+
+   getch();  }
