@@ -1,0 +1,124 @@
+#include<fstream.h>
+#include<conio.h>
+#include<ctype.h>
+#include<string.h>
+
+void read()
+{ ifstream f1("Pointers.txt");
+  char ch[20];
+   while(f1.eof()==0)
+   { f1.getline(ch,20,' ');
+     cout<<ch<<" ";     }
+      f1.close();            }
+
+void upper()
+{ ifstream f1("Pointers.txt");
+  ofstream f2("upper.txt");
+  int l;
+  char ch[20],ans[20];
+   while(f1.eof()==0)
+   { f1.getline(ch,20,' ');
+     ch[0]=toupper(ch[0]);
+     l=strlen(ch);
+   for(int i=0;i<l;i++)
+      f2<<ch[i];
+      f2<<' ';  }
+      f2.close();
+      f1.close();
+  ifstream f3("upper.txt");
+  if(!f3)
+  cout<<"\nFile not found";
+  while(f3.eof()==0)
+  { f3.getline(ans,20,' ');
+    cout<<ans<<" ";  }
+  f3.close();               }
+
+void count()
+{ ifstream f1("Pointers.txt");
+  char ch[20];
+  int c1=0,c2=0;
+   while(f1.eof()==0)
+   { f1.getline(ch,20,' ');
+     if(strcmp(ch,"the")==0)
+      c1++;
+     if(strcmp(ch,"in")==0)
+      c2++;                 }
+    f1.close();
+   cout<<"\nNumber of 'the' occuring:"<<c1;
+   cout<<"\nNumber of 'in' occuring:"<<c2;   }
+
+void search()
+{ ifstream f1("Pointers.txt");
+  char ch[20],ans;
+  int l,n=0;
+  cout<<"\nEnter character to be searched:";
+  cin>>ans;
+   while(f1.eof()==0)
+   { f1.getline(ch,20,' ');
+      l=strlen(ch);
+      if(ch[l-1]==ans)
+      {	n++;
+	cout<<ch<<" "; }             }
+  f1.close();
+  cout<<"\n\nNumber of words="<<n;        }
+
+void replace()
+{ fstream f1("Pointers.txt",ios::in|ios::out);
+  char ch,ans,str[20];
+  int l;
+  cout<<"\nEnter character to be searched:";
+  cin>>ans;
+   while(f1.eof()==0)
+   { f1.get(ch);
+      if(ch==ans)
+      { f1.seekg(-1,ios::cur);
+	ch='-';
+	f1.put(ch); }    }
+     f1.close();
+  ifstream f2("Pointers.txt");
+  if(!f2)
+  cout<<"File not found";
+  while(f2.eof()==0)
+  { f2.getline(str,20,' ');
+     cout<<str<<" ";	   }
+  f2.close();   	   }
+
+void main()
+{ ofstream f1("Pointers.txt");
+  f1<<"Pointers are special variables that are able to hold the address of the memory location to which they are pointing to. These addresses are in hexadecimal format";
+  f1.close();
+  char ch,ans;
+  do{
+  clrscr();
+  cout<<"\n\tTHE MENU";
+  cout<<"\nA.Read the contents of the file";
+  cout<<"\nB.Convert first letter to uppercase";
+  cout<<"\nC.Number of 'the' and 'in' in file";
+  cout<<"\nD.Number of words ending with given character";
+  cout<<"\nE.Search and replace character with '-'";
+  cout<<"\nEnter your choice(A/B/C/D/E):";
+  cin>>ans;
+  cout<<"__________________________________________________\n";
+
+   switch(ans)
+   { case 'A':
+     case 'a':read();
+	      break;
+     case 'B':
+     case 'b':upper();
+	      break;
+     case 'C':
+     case 'c':count();
+	      break;
+     case 'D':
+     case 'd':search();
+	      break;
+     case 'E':
+     case 'e':replace();
+	      break;
+     default:cout<<"\nWrong choice";    }
+   cout<<"\n__________________________________________\n";
+
+ cout<<"\nDo you wish to continue(Y/N):";
+ cin>>ch;}while(ch=='y'||ch=='Y');
+ getch(); }
