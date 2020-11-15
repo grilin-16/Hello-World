@@ -1,0 +1,55 @@
+#include<iostream.h>
+#include<conio.h>
+#include<stdio.h>
+
+struct game
+{ int pno;
+  char pname[30];
+  int points;     };
+
+int i,j,n;
+game p1[50],temp;
+char ans;
+
+void enter()
+{ for(i=0;i<n;i++)
+  { cout<<"\nPlayer No:";
+    cin>>p1[i].pno;
+    cout<<"Name:";
+    gets(p1[i].pname);
+    cout<<"Points:";
+    cin>>p1[i].points; 	}     }
+
+void disp()
+{ cout<<"\nPLAYER NO\tNAME\tPOINTS\n";
+  for(i=0;i<n;i++)
+  { cout<<p1[i].pno<<"\t\t"<<p1[i].pname<<"\t"<<p1[i].points<<"\n";  }  }
+
+void insertion()
+{ for(i=0;i<n;i++)
+  { temp=p1[i];
+    j=i-1;
+     while((temp.points>p1[j].points)&&(j>=0))
+     { p1[j+1]=p1[j];
+       j=j-1;  }
+    p1[j+1]=temp;   }
+    disp();               }
+
+void main()
+{ do{
+  clrscr();
+  cout<<"\nEnter number of players:";
+  cin>>n;
+  if(n>0)
+  { clrscr();
+    enter();
+    clrscr();
+    cout<<"\nAfter sorting:\n";
+    insertion();  }
+  else
+  cout<<"\nNo documents!";
+
+  cout<<"\n\nDo you wish to continue(Y/N):";
+  cin>>ans; }while(ans=='Y'||ans=='y');
+
+   getch();     }
