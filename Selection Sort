@@ -1,0 +1,47 @@
+#include<iostream.h>
+#include<conio.h>
+#include<stdio.h>
+
+int size,i,j,pos;
+
+struct employee
+{ int eid;
+  char name[30];
+  float sal;      };
+
+employee e1[50],temp,small;
+
+void enter()
+{ for(i=0;i<size;i++)
+  { cout<<"\nEmpployee id:";
+    cin>>e1[i].eid;
+    cout<<"Name:";
+    gets(e1[i].name);
+    cout<<"Salary:";
+    cin>>e1[i].sal;         }     }
+
+void disp()
+{ cout<<"\nEMPLOYEE ID\tNAME\tSALARY\n";
+  for(i=0;i<size;i++)
+  { cout<<e1[i].eid<<"\t\t"<<e1[i].name<<"\t"<<e1[i].sal<<"\n";  }  }
+
+void selection()
+{ for(i=0;i<size-1;i++)
+  { small=e1[i];
+    pos=i;
+     for(j=i;j<size;j++)
+	if(e1[j].sal<small.sal)
+	{ small=e1[j];
+	  pos=j;    }
+    temp=e1[i];
+    e1[i]=small;
+    e1[pos]=temp;    }
+
+    disp();	  }
+void main()
+{ clrscr();
+  cout<<"\nEnter number of employees:";
+  cin>>size;
+  enter();
+  selection();
+getch();}
