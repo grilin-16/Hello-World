@@ -1,0 +1,26 @@
+void del(int arr[],int &s)
+{ int pos,i,j;
+   cout<<"\nEnter your position to delete element:";
+	   cin>>pos;
+	   if(pos>s)
+	   cout<<"\nIt is out of range";
+	   else
+	   {  pos--;
+	      s--;
+	      for(i=pos;i<s;i++)
+	      { arr[i]=arr[i+1]; }  }  }
+
+clrscr();
+int n,a[100],i;
+cout<<"\nEnter your limit:";
+	  cin>>n;
+	  cout<<"\nEnter array elements\n";
+	  for(i=0;i<n;i++)
+	  { cout<<"Element "<<i+1<<":";
+	    cin>>a[i]; }
+	  del(a,n);
+	  cout<<"\nThe new array:";
+	  for(i=0;i<n;i++)
+	   cout<<a[i]<<" ";
+	  cout<<"\n\nThank you";
+getch();}
