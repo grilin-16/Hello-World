@@ -1,0 +1,31 @@
+void insert(int arr[],int &s)
+{  int pos,i,j,temp,e;
+   cout<<"Enter the position to insert element:";
+   cin>>pos;
+   if(pos>s)
+   cout<<"\nIt is out of range";
+   else
+   {  cout<<"Enter the new element:";
+      cin>>e;
+      pos--;
+      for(i=s;i>=pos;i--)
+      {  arr[i+1]=arr[i];  }
+      arr[pos]=e;
+      s++;            }                          }
+
+
+void main(){
+clrscr();
+int n,a[100],i;
+cout<<"\nEnter your limit:";
+	  cin>>n;
+	  cout<<"\nEnter array elements\n";
+	  for(i=0;i<n;i++)
+	  { cout<<"Element "<<i+1<<":";
+	    cin>>a[i]; }
+	  insert(a,n);
+	  cout<<"\nThe new array:";
+	  for(i=0;i<n;i++)
+	   cout<<a[i]<<" ";
+	  cout<<"\n\nThank you";
+getch()}
