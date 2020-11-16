@@ -1,0 +1,77 @@
+#include<iostream.h>
+#include<conio.h>
+#include<stdio.h>
+
+struct book
+{ int bno;
+  char title[100];
+  book *next;     };
+
+book *top=NULL;
+
+void push()
+{ book *b1;
+
+  b1=new book;
+  cout<<"\nEnter book number:";
+  cin>>b1->bno;
+  cout<<"Enter book title:";
+  gets(b1->title);
+  b1->next=NULL;
+
+  if(top==NULL)
+   top=b1;
+  else
+  { b1->next=top;
+    top=b1;      }    }
+
+void pop()
+{ book *temp;
+  if(top==NULL)
+  cout<<"\nStack underflow";
+  else
+  { temp=top;
+    top=top->next;
+    delete temp;
+    cout<<"\nBook deleted"; }    }
+
+void display()
+{ book *temp;
+  if(top==NULL)
+  cout<<"\nStack is empty";
+  else
+  { temp=top;
+    cout<<"\nBOOK NO\tTITLE\n";
+    while(temp!=NULL)
+    { cout<<temp->bno<<"\t";
+      cout<<temp->title;
+      temp=temp->next;
+      cout<<"\n";      }    }    }
+
+void main()
+{ clrscr();
+  char ans,ch;
+  do{
+  clrscr();
+  cout<<"\n\tMENU";
+  cout<<"\nA.Push in to a stack";
+  cout<<"\nB.Pop from a stack";
+  cout<<"\nC.Display contents from stack";
+  cout<<"\nEnter your choice(A/B/C):";
+  cin>>ans;
+  cout<<"____________________________________\n";
+  switch(ans)
+  { case 'A':
+    case 'a':push();
+	     break;
+    case 'B':
+    case 'b':pop();
+	     break;
+    case 'C':
+    case 'c':display();
+	     break;
+    default:cout<<"\nWrong chocie";  }
+    cout<<"\n___________________________________";
+    cout<<"\nDo you wish to continue(y/n):";
+    cin>>ch; }while(ch=='y'||ch=='Y');
+    getch(); }
