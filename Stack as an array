@@ -1,0 +1,51 @@
+#include<iostream.h>
+#include<conio.h>
+
+ int arr[10],i,top=-1,size=10;
+
+ void push()
+ {   if(top==size-1)
+     cout<<"\nStack overflow";
+     else
+     { top++;
+       cout<<"\nEnter element:";
+       cin>>arr[top];
+       cout<<arr[top]<<" is inserted\n";   }   }
+
+ void pop()
+ { if(top==-1)
+   cout<<"\nStack empty";
+   else
+   cout<<arr[top--]<<" is deleted";      }
+
+ void disp()
+ { int temp=0;
+   if(top==-1)
+   cout<<"\nStack is empty";
+   else
+   { cout<<"\nThe elements:\n";
+     for(temp;temp<=top;temp++)
+     cout<<arr[temp]<<"\n";   }   }
+
+ void main()
+ { clrscr();
+   char ch,ans;
+   do
+   { clrscr();
+     cout<<"\n\tMENU\nA.Push\nB.Pop\nC.Display";
+     cout<<"\nEnter your choice(A/B/C):";
+     cin>>ch;
+
+     switch(ch)
+     { case 'A':
+       case 'a':push();break;
+       case 'B':
+       case 'b':pop();break;
+       case 'C':
+       case 'c':disp();break;
+       default:cout<<"\nWrong choice";  }
+
+      cout<<"\nDo you wish to continue(Y/N):";
+      cin>>ans;  }while(ans=='y'||ans=='Y');
+
+      getch();  }
