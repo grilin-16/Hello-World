@@ -1,0 +1,32 @@
+#include<iostream.h>
+#include<conio.h>
+#include<stdlib.h>
+
+void rowsum(int a[100][100],int r,int c)
+{  int i,j,sum;
+   for(i=0;i<r;i++)
+   {  sum=0;
+      for(j=0;j<c;j++)
+       sum=sum+a[i][j];
+       cout<<"\nSum of row "<<i+1<<"="<<sum; }      }
+       
+void main(){
+int i,j,r,c,arr[100][100];
+clrscr();
+    cout<<"\nEnter row size:";
+    cin>>r;
+    cout<<"Enter column size:";
+    cin>>c;
+    cout<<"Enter your elements:";
+    for(i=0;i<r;i++)
+     for(j=0;j<c;j++)
+      cin>>arr[i][j];
+  cout<<"\nArray=\n";
+	   for(i=0;i<r;i++)
+	    { for(j=0;j<c;j++)
+	       cout<<arr[i][j]<<" ";
+		cout<<"\n"; }
+	  rowsum(arr,r,c);
+	  cout<<"\n\nThank you";
+   getch();}
+
