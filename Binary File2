@@ -35,7 +35,8 @@ class emp
 	    { return empid;   }
 
 	    void updatedesig(char arr[20])
-	    { strcpy(design,arr);   }          };
+	    { strcpy(design,arr);   }     
+	};
 
    void read()
    { fstream f1("Myfile.dat",ios::out|ios::binary);
@@ -79,7 +80,8 @@ class emp
 	    f1.seekg(pos-sizeof(e1),ios::beg);
 	    f1.write((char *)&e1,sizeof(e1));
 	    cout<<"\nRecord modified";
-	    break;                   }     }
+	    break;                   }     
+	    }
      f1.close();
      if(f==0)
      cout<<"\nRecord not found";   		 }
