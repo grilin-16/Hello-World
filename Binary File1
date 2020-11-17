@@ -7,7 +7,7 @@
  { char name[20];
    char dept[20];
    float sal;
-
+   
    public: void in()
 	   { cout<<"\nEnter name:";
 	     gets(name);
@@ -102,6 +102,7 @@
 
    cout<<"\n__________________________________";
    cout<<"\n\nDo you wish to continue(Y/N):";
-   cin>>ch;}while(ch=='Y'||ch=='y');
+   cin>>ch;
+   }while(ch=='Y'||ch=='y');
 
    getch();  }
