@@ -52,7 +52,8 @@ class flightdata
    while(f1.read((char *)&e1,sizeof(e1)))
    { if(e1.retstatus()=='I'||e1.retstatus()=='i')
      { f2.write((char *)&e1,sizeof(e1)); }     }
-  f1.close();  f2.close();
+  f1.close();  
+  f2.close();
 
   ifstream f3("Inactive.dat",ios::binary);
   cout<<"\nNUMBER\tNAME\tSTATUS\tBOARDING\tDESTINATION\n";
@@ -143,5 +144,6 @@ while(f1.read((char *)&f,sizeof(f)))
 	default:cout<<"\nWrong choice";   }
       cout<<"\n______________________________________";
       cout<<"\nDo you wish to continue(Y/N):";
-      cin>>ans; }while(ans=='Y'||ans=='y');
+      cin>>ans; 
+      }while(ans=='Y'||ans=='y');
       getch(); }
