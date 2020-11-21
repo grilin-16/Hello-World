@@ -1,0 +1,58 @@
+#include<iostream.h>
+#include<conio.h>
+
+ #define size 5
+
+ int arr[10],i,front=-1,rear=-1;
+
+ void ins()
+ {   if(rear==size-1)
+     cout<<"\nOueue overflow";
+     else
+     { if(front==-1)
+       front=0;
+       rear++;
+       cout<<"\nEnter element:";
+       cin>>arr[rear];
+       cout<<arr[rear]<<" is inserted\n";   }   }
+
+ void del()
+ { if(front==-1)
+   cout<<"\nQueue is empty";
+   else
+   { cout<<arr[front]<<" is deleted";
+     front++;
+     if(front>rear)
+     front=rear=-1;     }                }
+
+ void disp()
+ { int temp=0;
+   if(rear==-1)
+   cout<<"\nQueue is empty";
+   else
+   { cout<<"\nThe elements:";
+     for(temp=front;temp<=rear;temp++)
+     cout<<"\n"<<arr[temp];   }   }
+
+ void main()
+ { clrscr();
+   char ch,ans;
+   do
+   { clrscr();
+     cout<<"\n\tMENU\nA.Insert\nB.Delete\nC.Display";
+     cout<<"\nEnter your choice(A/B/C):";
+     cin>>ch;
+
+     switch(ch)
+     { case 'A':
+       case 'a':ins();break;
+       case 'B':
+       case 'b':del();break;
+       case 'C':
+       case 'c':disp();break;
+       default:cout<<"\nWrong choice";  }
+
+      cout<<"\nDo you wish to continue(Y/N):";
+      cin>>ans;  }while(ans=='y'||ans=='Y');
+
+      getch();  }
