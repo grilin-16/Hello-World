@@ -1,3 +1,4 @@
+
 void del(int arr[],int &s)
 { int pos,i,j;
    cout<<"\nEnter your position to delete element:";
@@ -8,7 +9,9 @@ void del(int arr[],int &s)
 	   {  pos--;
 	      s--;
 	      for(i=pos;i<s;i++)
-	      { arr[i]=arr[i+1]; }  }  }
+	      { arr[i]=arr[i+1]; } 
+	     } 
+	 }
 
 clrscr();
 int n,a[100],i;
