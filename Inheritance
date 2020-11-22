@@ -1,3 +1,4 @@
+
 #include<iostream.h>
 #include<conio.h>
 #include<stdio.h>
@@ -16,6 +17,7 @@ class Person{
 		cout<<"\n Age : "<<age;
 		}
 	   };
+	   
 class student:public Person{
 	int rno;
 	float avgmark;
@@ -32,6 +34,7 @@ class student:public Person{
 		return avgmark;
 		}
 	     };
+	     
 class Graduate_student:public student{
 	char subject[25];
 	char employed;
@@ -83,7 +86,7 @@ void main(){
 			if(g.get_average()<=g1[i].get_average())
 				g=g1[i];
 			}
-  cout<<"\n  REPORT ";
+        cout<<"\n  REPORT ";
 	cout<<"\n Year - 2018 ";
 	cout<<"\n Number of working students : "<<count1;
 	cout<<"\n Number of non working graduates : "<<count3;
