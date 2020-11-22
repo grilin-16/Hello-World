@@ -19,7 +19,8 @@
 
      cout<<"\nEnter element:";
      cin>>arr[rear];
-     cout<<arr[rear]<<" is inserted\n";   }
+     cout<<arr[rear]<<" is inserted\n";  
+     }
 
  void del()
  { if(front==-1)
@@ -33,7 +34,8 @@
    { if(front==size-1)
      front=0;
      else
-     front++;     }                }
+     front++;     }             
+   }
 
  void disp()
  { int ftemp=front,rtemp=rear;
@@ -56,7 +58,8 @@
       while(ftemp<=rtemp)
       { cout<<arr[ftemp]<<" ";
 	ftemp++;             }	    }
-   cout<<endl;            }
+   cout<<endl;          
+   }
 
  void main()
  { clrscr();
@@ -79,6 +82,7 @@
        default:cout<<"\nWrong choice";  }
 
       cout<<"\nDo you wish to continue(Y/N):";
-      cin>>ans;  }while(ans=='y'||ans=='Y');
+      cin>>ans;}while(ans=='y'||ans=='Y');
 
-      getch();  }
+      getch();  
+      }
