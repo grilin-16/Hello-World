@@ -1,3 +1,4 @@
+
 #include<iostream.h>
 #include<conio.h>
 #include<stdio.h>
@@ -18,12 +19,14 @@ void enter()
     cout<<"Name:";
     gets(e1[i].name);
     cout<<"Salary:";
-    cin>>e1[i].sal;         }     }
+    cin>>e1[i].sal;         }   
+    }
 
 void disp()
 { cout<<"\nEMPLOYEE ID\tNAME\tSALARY\n";
   for(i=0;i<size;i++)
-  { cout<<e1[i].eid<<"\t\t"<<e1[i].name<<"\t"<<e1[i].sal<<"\n";  }  }
+  { cout<<e1[i].eid<<"\t\t"<<e1[i].name<<"\t"<<e1[i].sal<<"\n";  } 
+  }
   
 void bubble()
 { for(i=0;i<size;i++)
@@ -41,5 +44,6 @@ void bubble()
 
   enter();
   bubble();
-  getch();}
+  getch();
+  }
 
