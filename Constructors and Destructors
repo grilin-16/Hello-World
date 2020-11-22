@@ -1,3 +1,4 @@
+
 #include<iostream.h>
 #include<conio.h>
 #include<stdio.h>
@@ -69,4 +70,5 @@ class clothing{
 		clothing c3(c1);
 		cout<<"\nCopy constructor "<<endl;
 		c3.display();
-	getch();}
+	getch();
+	}
