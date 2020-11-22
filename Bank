@@ -1,3 +1,4 @@
+
 #include<iostream.h>
 #include<conio.h>
 #include<stdio.h>
@@ -53,7 +54,7 @@ class BANK{
 		}
 
 	};
-	BANK b[100];
+  BANK b[100];
 
  void main(){
 	int ch,flag=0;
@@ -108,4 +109,5 @@ class BANK{
 			b[i].display_detail();}
 
 
- getch();}
+ getch();
+ }
