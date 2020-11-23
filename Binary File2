@@ -97,7 +97,7 @@ class emp
 	cout<<"\nEnter new designation:";
 	gets(temp);
      if(!f1)
-    cout<<"\nFile not found";
+          cout<<"\nFile not found";
               while(f1.read((char *)&e1,sizeof(e1)))
 	{  if(tempid==e1.retempid())
 	    { e1.updatedesig(temp);
@@ -109,7 +109,8 @@ class emp
 	f1.close();
 	e1.disp();
 	if(flag==0)
-	cout<<"\nRecord not found";      }
+	cout<<"\nRecord not found";    
+	}
 
     void main()
     { char ans,ch;
