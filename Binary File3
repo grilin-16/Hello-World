@@ -20,7 +20,8 @@ class flightdata
 	   cout<<"Enter boarding point:";
 	   gets(bpoint);
 	   cout<<"Enter destination:";
-	   gets(dest);                  }
+	   gets(dest);         
+	   }
 
 	 void out()
 	 { cout<<fno<<"\t"<<fname<<"\t"<<status<<"\t"<<bpoint<<"\t\t"<<dest; }
@@ -29,7 +30,9 @@ class flightdata
 	 { return status; }
 
 	 char * retbpoint()
-	 { return bpoint; }    };
+	 { return bpoint; }  
+	 
+	 };
 
   void getdata()
   {  fstream f1("Flight.dat",ios::out|ios::binary);
@@ -146,4 +149,5 @@ while(f1.read((char *)&f,sizeof(f)))
       cout<<"\nDo you wish to continue(Y/N):";
       cin>>ans; 
       }while(ans=='Y'||ans=='y');
-      getch(); }
+      getch(); 
+      }
