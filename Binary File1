@@ -22,7 +22,8 @@
 	     cout<<"\nSalary:"<<sal;     }
 
 	   char *retname()
-	   { return name; }  };
+	   { return name; } 
+	};
 
  void records()
  { ofstream f1("PGM12.dat",ios::binary);
@@ -71,7 +72,9 @@
    cout<<"\nFile not found";
    while(f1.read((char *)&d1,sizeof(d1)))
    {  d1.out();  }
-   f1.close();               }
+   f1.close();               
+  
+  }
 
  void main()
  { clrscr();
