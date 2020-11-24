@@ -24,4 +24,5 @@ cout<<"\nThe elements above diagonal:";
 	       for(j=0;j<n;j++)
 		if(i<j)
 		{ cout<<arr[i][j]<<" "; }
-getch();}
+getch();
+}
