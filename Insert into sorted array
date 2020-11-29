@@ -14,20 +14,24 @@ void srtins(int arr[],int &s)
      { for(j=s-1;j>=0;j--)
        arr[j+1]=arr[j];
        arr[j+1]=e; s++;
-       break;  }
+       break;  
+       }
 
     else if(arr[s-1]<=e)
      { arr[s]=e; s++;
-       break; }
+       break;
+       }
 
     else if(arr[i+1]>e&&arr[i]<=e)
      {  for(j=s;j>i+1;j--)
 	arr[j]=arr[j-1];
 	arr[j]=e; s++;
-	break; }  }
+	break; } 
+	}
   cout<<"\nYour array:";
   for(i=0;i<s;i++)
-  cout<<arr[i]<<" ";   }
+  cout<<arr[i]<<" ";  
+  }
 
 void main(){
 clrscr();
@@ -40,4 +44,5 @@ cout<<"\nEnter your limit:";
 	    cin>>a[i]; }
 	  srtins(a,n);
 	  cout<<"\n\nThank you";
-getch();}
+getch();
+}
