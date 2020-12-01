@@ -15,7 +15,8 @@
 	  cout<<"\nElement foumd in position "<<pos;
 	  else
 	  cout<<"\nElement not found"; 
-
+	  }
+	  
 void main(){
  clrscr();
  int a[100],i,si;
