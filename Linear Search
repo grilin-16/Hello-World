@@ -1,3 +1,5 @@
+ #include<iostream.h>
+ 
  void linearsearch(int arr[],int s)
  {  int se1,flag,i,pos;
 	  cout<<"Enter searching element:";
