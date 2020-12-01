@@ -1,18 +1,20 @@
  #include<iostream.h>
  #include<conio.h>
  void linearsearch(int arr[],int s)
- {  int se1,flag,i,pos;
-	  cout<<"Enter searching element:";
-	  cin>>se1;
-	   for(i=0;i<s;i++)
-	   {   if(arr[i]==se1)
-	       {flag=1;
+ { int se1,flag,i,pos;
+   cout<<"Enter searching element:";
+   cin>>se1;
+   for(i=0;i<s;i++)
+	 {   if(arr[i]==se1)
+	       { flag=1;
 	       pos=++i;
-	       break;}     }
+	       break;}
+	       }
+	       
 	  if(flag==1)
 	  cout<<"\nElement foumd in position "<<pos;
 	  else
-	  cout<<"\nElement not found";      
+	  cout<<"\nElement not found"; 
 
 void main(){
  clrscr();
