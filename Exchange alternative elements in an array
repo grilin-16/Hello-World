@@ -13,6 +13,7 @@
        for(i=0;i<s;i++)
        cout<<arr[i]<<" ";    
        }
+       
  void main(){
  clrscr();
  int a[100],i,si;
