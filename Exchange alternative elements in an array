@@ -1,3 +1,5 @@
+ #include<iostream.h>
+ 
  void exchange(int arr[],int s)
  {   int i,flag;
        cout<<"\nThe old array:";
