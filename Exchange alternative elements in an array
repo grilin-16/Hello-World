@@ -25,4 +25,5 @@
 	     cin>>a[i]; }
 	   exchange(a,si);
 	   cout<<"\nThank you";
- getch();}
+ getch();
+ }
