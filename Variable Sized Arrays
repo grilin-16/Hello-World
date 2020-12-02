@@ -1,5 +1,4 @@
 int main() {
-     
     int a,b,i,j,k;
     cin >>a>>b;
     vector<vector<int>>arr(a);
@@ -8,13 +7,13 @@ int main() {
         arr[i].resize(k);
         for(j=0;j<k;++j){
             cin>>arr[i][j];
-        }       
-    }
+               }       
+          }
 
     for(int l=0;l<b;++l){
         cin>>i>>j;
         cout<<arr[i][j]<<endl;
-    }  
+          }  
         
     return 0;
-}
+     }
