@@ -7,7 +7,9 @@ void fun1()
 { char ch[100];
   ofstream f1("myfile.txt");
   cout<<"\nEnter contents:\n";
-  f1<<"This text file stores information in the form of ASCII. There is a delimiter function called end of line function. Text files are not encrypted and can be accessed in the bin.";
+  f1<<"This text file stores information in the form of ASCII.
+  There is a delimiter function called end of line function. 
+  Text files are not encrypted and can be accessed in the bin.";
   f1.close();              }
 
 void fun2()
