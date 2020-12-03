@@ -9,7 +9,8 @@ void read()
    while(f1.eof()==0)
    { f1.getline(ch,20,' ');
      cout<<ch<<" ";     }
-      f1.close();            }
+      f1.close();       
+      }
 
 void upper()
 { ifstream f1("Pointers.txt");
@@ -22,16 +23,19 @@ void upper()
      l=strlen(ch);
    for(int i=0;i<l;i++)
       f2<<ch[i];
-      f2<<' ';  }
-      f2.close();
-      f1.close();
+      f2<<' ';  
+      }
+      
+    f2.close();
+    f1.close();
   ifstream f3("upper.txt");
   if(!f3)
   cout<<"\nFile not found";
   while(f3.eof()==0)
   { f3.getline(ans,20,' ');
     cout<<ans<<" ";  }
-  f3.close();               }
+  f3.close();   
+  }
 
 void count()
 { ifstream f1("Pointers.txt");
