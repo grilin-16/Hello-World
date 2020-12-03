@@ -94,4 +94,5 @@ void main()
 cout<<"\n____________________________________";
          cout<<"\n\nDo you wish to continue(Y/N):";
          cin>>an; }while(an=='Y'||an=='y');
-getch(); }	
+getch();
+}	
