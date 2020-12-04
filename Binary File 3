@@ -112,7 +112,8 @@ while(f1.read((char *)&f,sizeof(f)))
    cout<<"\nNUMBER\tNAME\tSTATUS\tBOARDING\tDESTINATION\n";
    while(f1.read((char *)&f,sizeof(f)))
    {  f.out(); cout<<"\n";  }
-   f1.close();                                 }
+   f1.close();                   
+   }
 
  void main()
  {  clrscr();
