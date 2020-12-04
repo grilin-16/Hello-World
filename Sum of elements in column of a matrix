@@ -1,3 +1,4 @@
+
 #include<iostream.h>
 #include<conio.h>
 #include<stdlib.h>
@@ -7,7 +8,8 @@ void colsum(int a[100][100],int r,int c)
    {  sum=0;
       for(i=0;i<r;i++)
        sum=sum+a[i][j];
-      cout<<"\nSum of column "<<j+1<<"="<<sum; }    }
+      cout<<"\nSum of column "<<j+1<<"="<<sum; }   
+      }
 
 void main(){
 int i,j,r,c,arr[100][100];
